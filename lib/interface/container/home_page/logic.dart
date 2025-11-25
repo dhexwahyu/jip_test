@@ -16,6 +16,7 @@ class HomeLogic extends GetxController {
   }
 
   Future<void> loadDataCoupon() async {
+    // Jadi setiap load data, akan generate ulang kuponnya
     state.isLoading.value = true;
     final db = await _dbHelper.database;
     final generator = CouponGenerator();
