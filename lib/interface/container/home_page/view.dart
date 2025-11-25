@@ -23,7 +23,22 @@ class HomePage extends StatelessWidget {
           ),
           body: Obx(() {
             if (state.isLoading.value) {
-              return const Center(child: CircularProgressIndicator());
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Center(child: CircularProgressIndicator()),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    child: Text(
+                      "Memuat data... harap tunggu, ini bisa memakan waktu beberapa saat.",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey.shade600,
+                      ),
+                    ),
+                  ),
+                ],
+              );
             }
 
             if (state.reports.isEmpty) {
@@ -131,7 +146,7 @@ class HomePage extends StatelessWidget {
                               fontSize: 13, fontWeight: FontWeight.bold)))),
             ],
 
-            rows: report.boxes.take(5).map((box) {
+            rows: report.boxes.take(10).map((box) {
               return DataRow(
                 cells: [
                   DataCell(Center(
